@@ -1,130 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Coins MiniApp</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            font-size: 1.5em;
-        }
-        .container {
-            margin: 20px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-        }
-        .card {
-            border: 1px solid #ddd;
-            margin: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .card-title {
-            font-size: 18px;
-            font-weight: bold;
-        }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamster MiniApp</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>Daily Coins MiniApp</header>
-    <div class="container">
-        <!-- Main Section -->
-        <p>Welcome to the Daily Coins MiniApp!</p>
-        <img src="https://via.placeholder.com/150" alt="Circular Image">
-        <br>
-        <button onclick="alert('You earned 1 coin!')">🎉 Collect Coins</button>
-        <button onclick="alert('Combo Card: Double Rewards!')">🃏 Daily Combo Card</button>
-        <button onclick="window.open('https://t.me/your_community_link')">🤝 Join Community</button>
-
-        <!-- New Sections -->
-        <!-- Invite Friends -->
-        <div class="card">
-            <div class="card-title">Invite Your Friends</div>
-            <p>Share your referral link and earn extra coins!</p>
-            <input type="text" value="https://your-miniapp.com/ref?code=12345" readonly style="width:80%; text-align:center;">
-            <button onclick="copyReferral()">📋 Copy Link</button>
-        </div>
-
-        <!-- Daily Cards Section -->
-        <div class="card">
-            <div class="card-title">🎴 Your Cards</div>
-            <p>Check your daily combo cards and rewards!</p>
-            <button onclick="alert('Your card today: Double XP!')">Check Cards</button>
-        </div>
-
-        <!-- Airdrop Section -->
-        <div class="card">
-            <div class="card-title">🚀 Airdrop</div>
-            <p>Participate in our airdrop to win exclusive prizes!</p>
-            <button onclick="alert('Airdrop participation successful!')">Join Airdrop</button>
-        </div>
-
-        <!-- Coin Clicking Section -->
-        <div class="card">
-            <div class="card-title">🔄 Tap to Earn Coins</div>
-            <p>Click the button repeatedly to collect coins!</p>
-            <button onclick="addCoins()">💰 Tap to Collect</button>
-            <p id="coin-counter">Coins Collected: 0</p>
-        </div>
+  <!-- Header -->
+  <header class="header">
+    <h1>Hamster MiniApp</h1>
+    <div class="profile">
+      <span>Coins: <strong id="coins">1000</strong></span>
+      <span>Friends: <strong id="friends">3</strong></span>
     </div>
+  </header>
 
-    <!-- Telegram Login Widget -->
-    <h3>Login with Telegram</h3>
-    <script async src="https://telegram.org/js/telegram-widget.js?22" 
-            data-telegram-login="samplebot" 
-            data-size="large" 
-            data-userpic="false"
-            data-request-access="write">
-    </script>
+  <!-- Main Section -->
+  <main>
+    <div class="hamster-container">
+      <img src="hamster.png" alt="Hamster" id="hamster" onclick="addCoins()" />
+      <p>Tap the hamster to earn coins!</p>
+    </div>
+  </main>
 
-    <script>
-        let coins = 0;
-        function addCoins() {
-            coins++;
-            document.getElementById('coin-counter').innerText = "Coins Collected: " + coins;
-        }
+  <!-- Bottom Navigation -->
+  <footer>
+    <nav class="bottom-nav">
+      <button onclick="goTo('home')">Home</button>
+      <button onclick="goTo('tasks')">Task</button>
+      <button onclick="goTo('app')">App</button>
+      <button onclick="goTo('study')">Study</button>
+      <button disabled>Airdrop Coming Soon</button>
+    </nav>
+  </footer>
 
-        function copyReferral() {
-            const input = document.querySelector("input");
-            input.select();
-            document.execCommand("copy");
-            alert("Referral link copied to clipboard!");
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
