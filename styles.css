@@ -1,0 +1,67 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: linear-gradient(to bottom, #f3f4f6, #d9e8fc);
+  color: #333;
+}
+
+/* Header */
+.header {
+  background: #4caf50;
+  padding: 10px;
+  color: white;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Hamster Section */
+.hamster-container {
+  margin: 50px auto;
+}
+
+.hamster-container img {
+  width: 150px;
+  cursor: pointer;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #4caf50;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.bottom-nav button {
+  background: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.bottom-nav button:disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+}
