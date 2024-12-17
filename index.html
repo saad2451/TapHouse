@@ -3,52 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniApp - Daily Coins</title>
+    <title>Daily Coins MiniApp</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
         }
-        h1 {
-            color: #4CAF50;
-            margin-top: 20px;
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 1.5em;
         }
-        p {
-            color: #555;
+        .container {
+            margin: 20px;
         }
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
             font-size: 16px;
-            cursor: pointer;
             margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
         }
         button:hover {
             background-color: #45a049;
         }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        .card {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Daily Coins MiniApp!</h1>
-    <p>Collect your coins and enjoy daily rewards.</p>
-    
-    <!-- Buttons -->
-    <button onclick="alert('You earned 1 coin!')">Collect Coins</button>
-    <button onclick="alert('Combo Card: Double Rewards!')">Daily Combo Card</button>
-    <button onclick="window.open('https://t.me/your_community_link')">Join Community</button>
+    <header>Daily Coins MiniApp</header>
+    <div class="container">
+        <!-- Main Section -->
+        <p>Welcome to the Daily Coins MiniApp!</p>
+        <img src="https://via.placeholder.com/150" alt="Circular Image">
+        <br>
+        <button onclick="alert('You earned 1 coin!')">🎉 Collect Coins</button>
+        <button onclick="alert('Combo Card: Double Rewards!')">🃏 Daily Combo Card</button>
+        <button onclick="window.open('https://t.me/your_community_link')">🤝 Join Community</button>
 
-    <!-- Telegram Widget -->
-    <h3>Login via Telegram</h3>
-    <script async src="https://telegram.org/js/telegram-widget.js?22"
+        <!-- New Sections -->
+        <!-- Invite Friends -->
+        <div class="card">
+            <div class="card-title">Invite Your Friends</div>
+            <p>Share your referral link and earn extra coins!</p>
+            <input type="text" value="https://your-miniapp.com/ref?code=12345" readonly style="width:80%; text-align:center;">
+            <button onclick="copyReferral()">📋 Copy Link</button>
+        </div>
+
+        <!-- Daily Cards Section -->
+        <div class="card">
+            <div class="card-title">🎴 Your Cards</div>
+            <p>Check your daily combo cards and rewards!</p>
+            <button onclick="alert('Your card today: Double XP!')">Check Cards</button>
+        </div>
+
+        <!-- Airdrop Section -->
+        <div class="card">
+            <div class="card-title">🚀 Airdrop</div>
+            <p>Participate in our airdrop to win exclusive prizes!</p>
+            <button onclick="alert('Airdrop participation successful!')">Join Airdrop</button>
+        </div>
+
+        <!-- Coin Clicking Section -->
+        <div class="card">
+            <div class="card-title">🔄 Tap to Earn Coins</div>
+            <p>Click the button repeatedly to collect coins!</p>
+            <button onclick="addCoins()">💰 Tap to Collect</button>
+            <p id="coin-counter">Coins Collected: 0</p>
+        </div>
+    </div>
+
+    <!-- Telegram Login Widget -->
+    <h3>Login with Telegram</h3>
+    <script async src="https://telegram.org/js/telegram-widget.js?22" 
             data-telegram-login="samplebot" 
             data-size="large" 
+            data-userpic="false"
             data-request-access="write">
+    </script>
+
+    <script>
+        let coins = 0;
+        function addCoins() {
+            coins++;
+            document.getElementById('coin-counter').innerText = "Coins Collected: " + coins;
+        }
+
+        function copyReferral() {
+            const input = document.querySelector("input");
+            input.select();
+            document.execCommand("copy");
+            alert("Referral link copied to clipboard!");
+        }
     </script>
 </body>
 </html>
