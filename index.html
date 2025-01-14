@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>موقع الأفلام</title>
+  <title>arabside - موقع الأفلام</title>
   <style>
-    .movie-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* تم نسخ الأنماط من موقع faselHD */
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
     .movie-card {
-      width: 300px;
-      margin: 20px;
-      text-align: center;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      overflow: hidden;
     }
     .movie-card img {
       width: 100%;
       height: 400px;
       object-fit: cover;
     }
+    .movie-card h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .movie-card p {
+      font-size: 14px;
+      color: #666;
+      margin: 0 10px 10px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <h1>مرحبا بكم في موقع الأفلام!</h1>
-  <div class="movie-container" id="movie-container">
-    <!-- سيتم إضافة بطاقات الأفلام هنا -->
+  <div class="container">
+    <h1>مرحبا بكم في arabside!</h1>
+    <div class="movie-container">
+      <!-- سيتم إضافة بطاقات الأفلام هنا -->
+    </div>
   </div>
 
   <script>
@@ -37,7 +60,7 @@
 
     // دالة لإنشاء بطاقة فيلم
     function createMovieCard(movieUrl) {
-      const movieContainer = document.getElementById('movie-container');
+      const movieContainer = document.querySelector('.movie-container');
       const movieCard = document.createElement('div');
       movieCard.classList.add('movie-card');
 
@@ -53,6 +76,10 @@
       const movieTitleElement = document.createElement('h3');
       movieTitleElement.textContent = movieTitle.replace(/-/g, ' ');
       movieCard.appendChild(movieTitleElement);
+
+      const movieDescriptionElement = document.createElement('p');
+      movieDescriptionElement.textContent = 'وصف الفيلم هنا';
+      movieCard.appendChild(movieDescriptionElement);
 
       movieContainer.appendChild(movieCard);
     }
