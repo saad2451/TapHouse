@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamster MiniApp</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>موقع الأفلام</title>
+  <style>
+    .movie-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .movie-card {
+      width: 300px;
+      margin: 20px;
+      text-align: center;
+    }
+    .movie-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <h1>Hamster MiniApp</h1>
-    <div class="profile">
-      <span>Coins: <strong id="coins">1000</strong></span>
-      <span>Friends: <strong id="friends">3</strong></span>
-    </div>
-  </header>
+  <h1>مرحبا بكم في موقع الأفلام!</h1>
+  <div class="movie-container" id="movie-container">
+    <!-- سيتم إضافة بطاقات الأفلام هنا -->
+  </div>
 
-  <!-- Main Section -->
-  <main>
-    <div class="hamster-container">
-      <img src="hamster.png" alt="Hamster" id="hamster" onclick="addCoins()" />
-      <p>Tap the hamster to earn coins!</p>
-    </div>
-  </main>
+  <script>
+    // قائمة بعناوين URL للأفلام من موقع faselHD
+    const movieUrls = [
+      'https://faselhd.co/movie/the-shawshank-redemption-1994/',
+      'https://faselhd.co/movie/the-godfather-1972/',
+      'https://faselhd.co/movie/the-dark-knight-2008/',
+      // أضف المزيد من عناوين URL للأفلام هنا
+    ];
 
-  <!-- Bottom Navigation -->
-  <footer>
-    <nav class="bottom-nav">
-      <button onclick="goTo('home')">Home</button>
-      <button onclick="goTo('tasks')">Task</button>
-      <button onclick="goTo('app')">App</button>
-      <button onclick="goTo('study')">Study</button>
-      <button disabled>Airdrop Coming Soon</button>
-    </nav>
-  </footer>
+    // دالة لإنشاء بطاقة فيلم
+    function createMovieCard(movieUrl) {
+      const movieContainer = document.getElementById('movie-container');
+      const movieCard = document.createElement('div');
+      movieCard.classList.add('movie-card');
 
-  <script src="script.js"></script>
+      // استرداد معلومات الفيلم من عنوان URL
+      const movieTitle = movieUrl.split('/')[4];
+      const movieImageUrl = `https://faselhd.co/wp-content/uploads/2020/04/${movieTitle}-poster.jpg`;
+
+      // إنشاء محتوى بطاقة الفيلم
+      const movieImage = document.createElement('img');
+      movieImage.src = movieImageUrl;
+      movieCard.appendChild(movieImage);
+
+      const movieTitleElement = document.createElement('h3');
+      movieTitleElement.textContent = movieTitle.replace(/-/g, ' ');
+      movieCard.appendChild(movieTitleElement);
+
+      movieContainer.appendChild(movieCard);
+    }
+
+    // إنشاء بطاقات الأفلام
+    movieUrls.forEach(createMovieCard);
+  </script>
 </body>
 </html>
